@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomProgressBar">
+        <attr name="bgCirColor" format="color|reference"/>
+        <attr name="circleColor" format="color|reference"/>
+        <attr name="arcColor" format="color|reference"/>
+        <attr name="textColor" format="color"/>
+        <attr name="cirStokeWidth" format="float"/>
+        <attr name="arcStokeWidth" format="float"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="value" format="integer"/>
+        <attr name="textType" format="enum">
+            <enum name="nomal" value="0"/>
+            <enum name="bold" value="1"/>
+            <enum name="italic" value="2"/>
+            <enum name="bold_italic" value="3"/>
+        </attr>
+        <attr name="arcType" format="enum">
+            <enum name="nomal" value="0"/>
+            <enum name="interval" value="1"/>
+        </attr>
+        <attr name="arcType_interval_width" format="float"/>
+        <attr name="arcType_interval_interval" format="float"/>
+    </declare-styleable>
+</resources>
