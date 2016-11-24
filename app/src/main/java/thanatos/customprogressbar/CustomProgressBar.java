@@ -62,6 +62,8 @@ public class CustomProgressBar extends View {
 
     public CustomProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        //获取进度条的配置属性
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomProgressBar);
 
         //背景圆颜色
@@ -90,11 +92,13 @@ public class CustomProgressBar extends View {
 
         //设置进度初始值
         progress = typedArray.getInteger(R.styleable.CustomProgressBar_value, 0);
+
         //设置进度条样式
         int index=typedArray.getInteger(R.styleable.CustomProgressBar_arcType,0);
 
         //设置间隔进度条的间隔
         arcType_interval_interval=typedArray.getFloat(R.styleable.CustomProgressBar_arcType_interval_interval,10f);
+
         //设置每一个间隔的宽度
         arcType_interval_width=typedArray.getFloat(R.styleable.CustomProgressBar_arcType_interval_width,10f);
 
@@ -141,7 +145,7 @@ public class CustomProgressBar extends View {
     }
 
     private void init() {
-        //背景园
+        //背景圆
         mPaint_bg=new Paint();
         mPaint_bg.setColor(getBgCirColor());
         mPaint_bg.setAntiAlias(true);
@@ -159,6 +163,11 @@ public class CustomProgressBar extends View {
         mPaint_arc.setStrokeWidth(getArcStokeWidth()+2);
         mPaint_arc.setAntiAlias(true);
         if (progressType==BarType.INTERVAL){
+
+            /**
+             * float[] 第一个 表示每一个间隔的宽度
+             *         第二个 表示间隔和间隔之间的宽度
+             */
             PathEffect effects = new DashPathEffect(new float[] { getArcType_interval_width(), getArcType_interval_interval()}, 1f);
             mPaint_arc.setPathEffect(effects);
         }
@@ -254,6 +263,7 @@ public class CustomProgressBar extends View {
 
     public void setProgressType(BarType progressType) {
         this.progressType = progressType;
+        postInvalidate();
     }
 
     public float getArcType_interval_interval() {
@@ -262,6 +272,7 @@ public class CustomProgressBar extends View {
 
     public void setArcType_interval_interval(float arcType_interval_interval) {
         this.arcType_interval_interval = arcType_interval_interval;
+        postInvalidate();
     }
 
     public float getArcType_interval_width() {
@@ -270,5 +281,6 @@ public class CustomProgressBar extends View {
 
     public void setArcType_interval_width(float arcType_interval_width) {
         this.arcType_interval_width = arcType_interval_width;
+        postInvalidate();
     }
 }
